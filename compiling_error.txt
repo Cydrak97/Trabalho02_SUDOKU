@@ -1,0 +1,4 @@
+/Users/isaacpinheiro/Documents/Trabalho02_SUDOKU/main.cpp:14:10: fatal error: 'conio.h' file not found
+#include <conio.h>
+         ^
+1 error generated.
