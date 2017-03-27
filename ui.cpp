@@ -1,16 +1,23 @@
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
+#include <time.h>
+#include <conio.h>
+#include <locale.h>
+#include <string>
 
-/* FUNCAO RESPONSAVEL POR GERAR O TITULO NA TELA */
+using namespace std;
+#define N 9
+//FUNCAO RESPONSAVEL POR GERAR O TITULO NA TELA
 void uiTitulo(){
-std::cout<<"\n\t      ********  **      **  ******     ******   **      **  **      **  \n"
-       <<"\t     *********  **      **  *******   ********  **     **   **      **  \n"
-       <<"\t     **         **      **  **    **  ***  ***  **    **    **      **  \n"
-       <<"\t       ****     **      **  **    **  **    **  **   ***    **      **  \n"
-       <<"\t        ****    **      **  **    **  **    **  *******     **      **  \n"
-       <<"\t            **  ***    ***  **    **  ***  ***  *******     ***    ***  \n"
-       <<"\t     *********   ********   *******   ********  **    **     ********   \n"
-       <<"\t     ********     ******    ******     ******   **     **     ******    \n\n";
+    printf("\n\t      ********  **      **  ******     ******   **      **  **      **  \n");
+    printf("\t     *********  **      **  *******   ********  **     **   **      **  \n");
+    printf("\t     **         **      **  **    **  ***  ***  **    **    **      **  \n");
+    printf("\t       ****     **      **  **    **  **    **  **   ***    **      **  \n");
+    printf("\t        ****    **      **  **    **  **    **  *******     **      **  \n");
+    printf("\t            **  ***    ***  **    **  ***  ***  *******     ***    ***  \n");
+    printf("\t     *********   ********   *******   ********  **    **     ********   \n");
+    printf("\t     ********     ******    ******     ******   **     **     ******    \n\n");
 }
 
 /* FUNCAO RESPONSAVEL POR IMPRIMIR O SUDOKU */
@@ -48,7 +55,7 @@ void uiMenuItens(std::string s){
   <<"\tInsira opcao: ";;
 }
 
-void uiQuestion(string str){
+void uiQuestion(std::string str){
   		std::cout<<"\n\n\t"<<str;
 }
 
