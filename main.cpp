@@ -13,17 +13,16 @@
 #include <time.h>
 #include <conio.h>
 #include <locale.h>
+#include "ui.cpp"
 
 /* DEFINES */
 #define N 9
 
 /* PROTOTIPOS */
-void titulo();
 void embaralhar(int sudokuResolvido[][N]);
 void preencheSudoku(int sudokuResolvido[][N]);
 void copia(int sudokuIncompleto[][N], int sudokuResolvido[][N]);
 void preencheCom0(int sudokuIncompleto[][N]);
-void imprime(int sudokuResolvido[][N]);
 void sair();
 
 /* MAIN */
@@ -35,28 +34,25 @@ int main(){
 	int sudokuIncompleto[N][N];
 	char op, loop;
 
-	/* DEFINICAO PADR�O DA LINHA CHAVE (DE 1 A 9) */
+	/* DEFINICAO PADRAO DA LINHA CHAVE (DE 1 A 9) */
 	for(int i=1; i<=N; i++){
 		sudokuResolvido[0][i-1] = i;
 	}
-	titulo();
+	uiTitulo();
 	embaralhar(sudokuResolvido);
 	preencheSudoku(sudokuResolvido);
 	copia(sudokuIncompleto, sudokuResolvido);
 	preencheCom0(sudokuIncompleto);
 
-	imprime(sudokuIncompleto);
-	std::cout<<"\n\n\tOpcoes:\n"
-		<<"\t\tR- Resolver sudoku.\n"
-		<<"\t\tG- Gerar outro sudoku.\n"
-		<<"\t\tS- Sair.\n\n"
-		<<"\tInsira opcoo: ";op=_getch(); std::cout<< op;
+	uiPrint(sudokuIncompleto);
+	uiMenuItens("R- Resolver sudoku.;G- Gerar outro sudoku.;S-Sair.");
+			op=_getch(); std::cout<< op;
 
 	if(op=='R' || op=='r'){
-		printf("\n\n");
-		imprime(sudokuResolvido);
-
-		std::cout<<"\n\n\tDeseja executar novamente? S/N ";loop=_getch();
+		uiBr(2);
+		uiPrint(sudokuResolvido);
+		uiQuestion("Deseja executar novamente? S/N");
+		loop=_getch();
 		if(loop=='s' || loop=='S'){
 			main();
 		}
@@ -77,17 +73,7 @@ int main(){
 }
 
 /* FUNCOES */
-	/* FUNCAO RESPONSAVEL POR GERAR O TITULO NA TELA */
-void titulo(){
-	std::cout<<"\n\t      ********  **      **  ******     ******   **      **  **      **  \n"
-    		 <<"\t     *********  **      **  *******   ********  **     **   **      **  \n"
-    		 <<"\t     **         **      **  **    **  ***  ***  **    **    **      **  \n"
-    		 <<"\t       ****     **      **  **    **  **    **  **   ***    **      **  \n"
-    		 <<"\t        ****    **      **  **    **  **    **  *******     **      **  \n"
-    		 <<"\t            **  ***    ***  **    **  ***  ***  *******     ***    ***  \n"
-    		 <<"\t     *********   ********   *******   ********  **    **     ********   \n"
-    		 <<"\t     ********     ******    ******     ******   **     **     ******    \n\n";
-}
+
 
 	/* FUNCAO RESPONSAVEL POR EMBARALHAR A LINHA CHAVE DO SUDOKU */
 void embaralhar(int sudokuResolvido[][N]){
@@ -174,26 +160,7 @@ void preencheCom0(int sudokuIncompleto[][N]){
 	}
 }
 
-	/* FUNCAO RESPONSAVEL POR IMPRIMIR O SUDOKU */
-void imprime(int sudoku[][N]){
-	int i, j;
-	printf("\t\t\t\t|=======|=======|=======|\n");
-	for(i=0; i<N; i++){
-	printf("\t\t\t\t| ");
-		for(j=0; j<N; j++){
-			if(j==3 || j==6){
-				printf("| ");
-			}
-			printf("%i ", sudoku[i][j]);
-		}
-		printf("|");
-		printf("\n");
-		if(i==2 || i==5){
-			printf("\t\t\t\t|=======|=======|=======|\n");
-		}
-	}
-	printf("\t\t\t\t|=======|=======|=======|\n");
-}
+
 
 	/* FUNCAO RESPONSAVEL POR SAIR */
 void sair(){
